@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
 
-  ensure_installed = { "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = { "javascript", "java", "typescript", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
   sync_install = false,
 
@@ -11,4 +11,6 @@ require'nvim-treesitter.configs'.setup {
 
     additional_vim_regex_highlighting = false,
   },
+
+  prefer_git = false
 }

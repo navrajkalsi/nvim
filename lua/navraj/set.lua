@@ -29,3 +29,20 @@ vim.opt.updatetime = 50
 vim.colorcolumn = "100"
 
 vim.o.scrolloff = 25
+
+vim.opt.list = true
+
+vim.opt.listchars = {
+    lead = "·",
+    trail = "·",
+    nbsp = "␣"
+}
+
+-- Executes when a buffer is request to be saved to the disk
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        vim.cmd([[%s/\s\+$//e]])
+        vim.lsp.buf.format({ async = false })
+    end,
+})

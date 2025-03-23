@@ -45,4 +45,9 @@ return require('packer').startup(function(use)
             require('lspsaga').setup({})
         end,
     })
+
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
 end)

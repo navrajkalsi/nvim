@@ -46,3 +46,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         vim.lsp.buf.format({ async = false })
     end,
 })
+
+-- Telescope File Browser
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#252526" })                    -- VS Code dark background
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#007ACC" })                    -- VS Code blue border
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "#1E1E1E" })              -- Dark prompt area
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#373737", fg = "#FFFFFF" }) -- Selected item

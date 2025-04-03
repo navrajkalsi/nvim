@@ -17,6 +17,8 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+P]])
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
+vim.keymap.set("n", "<C-c>", "<cmd>q<CR>")
+
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -34,4 +36,4 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 -- Terminal
 vim.keymap.set("n", "<leader>tt", ":term<CR>i", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>twd", ":term<CR>icd " .. vim.fn.expand('%:p:h') .. " <CR>clear<CR>",
-    { silent = true, noremap = true })
+  { silent = true, noremap = true })

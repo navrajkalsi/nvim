@@ -16,4 +16,4 @@ end
 -- Lazy is also added to nvim runtime path
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('plugins')
+require('lazy').setup 'plugins'

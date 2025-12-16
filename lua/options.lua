@@ -6,13 +6,14 @@ vim.opt.relativenumber = true
 vim.opt.showmode = false
 
 vim.opt.fillchars = {
-  eob = " "
+	eob = " ",
 }
 vim.opt.listchars = {
-  tab = "→ ",
-  lead = "·",
-  trail = "·",
-  nbsp = "␣"
+	tab = "→ ",
+	-- tab = "··",
+	lead = "·",
+	trail = "·",
+	nbsp = "␣",
 }
 
 vim.opt.breakindent = true
@@ -24,7 +25,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Always show a sign column. This prevents text from shifting when signs appear or disappear.
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -52,3 +53,16 @@ vim.opt.smoothscroll = true
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.textwidth = 100
+
+vim.opt.hlsearch = false
+vim.opt.termguicolors = true
+
+vim.opt.updatetime = 50
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function()
+		vim.cmd([[%s/\s\+$//e]])
+		vim.lsp.buf.format({ async = false })
+	end,
+})

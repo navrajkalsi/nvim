@@ -28,14 +28,14 @@ return {
 		{
 			"<leader>sf",
 			function()
-				require("telescope.builtin").find_files()
+				require("telescope.builtin").find_files({ hidden = true })
 			end,
 			desc = "[S]earch [F]iles",
 		},
 		{
 			"<leader>sg",
 			function()
-				require("telescope.builtin").live_grep()
+				require("telescope.builtin").live_grep({ additional_args = { "--hidden" } })
 			end,
 			desc = "[S]earch by [G]rep",
 		},
@@ -83,6 +83,9 @@ return {
 				require("telescope.builtin").live_grep({
 					grep_open_files = true,
 					prompt_title = "Live Grep in Open Files",
+					additional_args = {
+						"--hidden",
+					},
 				})
 			end,
 			desc = "[S]earch [O]pen Files",
@@ -90,18 +93,30 @@ return {
 		{
 			"<leader>sn",
 			function()
-				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config"), hidden = true })
 			end,
 			desc = "[S]earch [N]eovim files",
 		},
 		{
 			"<leader>fe",
-			":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+			function()
+				require("telescope").extensions.file_browser.file_browser({
+					path = "%:p:h",
+					hidden = true,
+					select_buffer = true,
+					respect_gitignore = false,
+				})
+			end,
 			desc = "Show [F]ile [E]plorer for current file directory",
 		},
 		{
 			"<leader>f.",
-			":Telescope file_browser<CR>",
+			function()
+				require("telescope").extensions.file_browser.file_browser({
+					hidden = true,
+					respect_gitignore = false,
+				})
+			end,
 			desc = "Show [F]ile Eplorer for /[.](current working directory)",
 		},
 	},
@@ -118,6 +133,14 @@ return {
 				file_browser = {
 					hijack_netrw = true,
 					mappings = { i = {}, n = {} },
+				},
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+				live_grep = {
+					additional_args = { "--hidden" },
 				},
 			},
 		}

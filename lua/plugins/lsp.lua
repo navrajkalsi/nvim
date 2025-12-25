@@ -1,5 +1,5 @@
 -- Change table here to 'ensure_installed' & 'vim.lsp.config(server)' & 'vim.lsp.enable(server)'
-local servers = { "lua_ls", "clangd", "ts_ls" }
+local servers = { "lua_ls", "clangd", "ts_ls", "bashls" }
 
 return {
 	"mason-org/mason-lspconfig.nvim",

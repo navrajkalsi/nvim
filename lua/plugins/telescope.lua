@@ -153,22 +153,23 @@ return {
 			pcall(telescope.load_extension, ext)
 		end
 
-		vim.api.nvim_create_autocmd("VimEnter", {
+		-- show file browser if started in a dir
+		vim.api.nvim_create_autocmd("UiEnter", {
 			once = true,
 			callback = function(data)
 				local directory = vim.fn.isdirectory(data.file) == 1
-				if not directory then
+				if data.file == "" or not directory then
 					return
 				end
 
-				-- Prevent Neovim from editing the directory buffer itself
-				vim.cmd.cd(data.file)
+				vim.fn.chdir(data.file)
+
 				require("telescope").extensions.file_browser.file_browser({
-					path = data.file,
+					cwd = data.file,
 					respect_gitignore = false,
 					hidden = true,
 					grouped = true,
-					initial_mode = "normal",
+					initial_mode = "insert",
 				})
 			end,
 		})

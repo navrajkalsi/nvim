@@ -50,6 +50,20 @@ return {
 			desc = "[S]earch current [B]uffer",
 		},
 		{
+			"<leader>sc",
+			function()
+				require("telescope.builtin").commands()
+			end,
+			desc = "[S]earch available [C]ommands",
+		},
+		{
+			"<leader>sk",
+			function()
+				require("telescope.builtin").keymaps()
+			end,
+			desc = "[S]earch available [K]eymaps",
+		},
+		{
 			"<leader>sd",
 			function()
 				require("telescope.builtin").diagnostics()

@@ -53,11 +53,12 @@ return {
 				local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 				-- Setting default capabilities of all servers
-				vim.lsp.config("*", {
-					capabilities = capabilities,
-				})
-
-				vim.lsp.enable(servers)
+				for _, server in ipairs(servers) do
+					vim.lsp.config(server, {
+						capabilities = capabilities,
+					})
+					vim.lsp.enable(server)
+				end
 			end,
 		},
 	},

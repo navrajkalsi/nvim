@@ -1,13 +1,13 @@
 return {
-	"Mofiqul/vscode.nvim",
+  "Mofiqul/vscode.nvim",
 
-	name = "vscode",
+  name = "vscode",
 
-	lazy = false,
+  lazy = false,
 
-	priority = 1000,
+  priority = 1000,
 
-	config = function()
-		vim.cmd.colorscheme("vscode")
-	end,
+  config = function()
+    vim.cmd.colorscheme("vscode")
+  end,
 }
